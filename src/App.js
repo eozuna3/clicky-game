@@ -4,15 +4,17 @@ import './App.css';
 import NavBar from "./components/NavBar.js";
 import Header from "./components/Header.js";
 import Footer from "./components/Footer.js";
-import Images from "./components/Images.js";
+//import Virus from "./components/Virus.js";
+import DisplayImages from "./components/DisplayImages.js";
 
 function App() {
   return (
     <div>
       <NavBar />
       <Header />
+      <DisplayImages />
+      {/* <Virus /> */}
       <Footer />
-      <Images />
     </div>
 
     // <div className="App">

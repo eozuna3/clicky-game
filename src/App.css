@@ -60,3 +60,8 @@ footer{
 .footer-row{
   background-color: #5138a1;
 }
+
+.img-responsive {
+    width: 170px;
+    height: 100px;
+}

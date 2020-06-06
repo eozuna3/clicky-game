@@ -1,21 +1,11 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import NavBar from "./components/NavBar.js";
-import Header from "./components/Header.js";
-import Footer from "./components/Footer.js";
-//import Virus from "./components/Virus.js";
-import DisplayImages from "./components/DisplayImages.js";
+import DisplayGame from "./components/DisplayGame.js";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <Header />
-      <DisplayImages />
-      {/* <Virus /> */}
-      <Footer />
-    </div>
+      <DisplayGame />
 
     // <div className="App">
     //   <header className="App-header">

@@ -10,7 +10,8 @@ class Virus extends React.Component{
 
      render() {
           return (
-               <>
+               <div className="container my-5">
+                    <div className="row">
                     {this.state.virusURL.map(images => (
                          <div className="col-md-3 my-2">
                               <button
@@ -22,7 +23,8 @@ class Virus extends React.Component{
                               </button>
                          </div>
                     ))}
-              </>
+                    </div>
+               </div>
           );
      }
 }

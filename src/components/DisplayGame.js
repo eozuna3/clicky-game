@@ -67,14 +67,11 @@ class DisplayGame extends React.Component {
      }
 
      handleImageClick = event => {
-          console.log("Image was clicked");
           let tempArray = this.state.imagesArray;
           let arrayIndex = 0;
           while (event.target.src !== tempArray[arrayIndex].url){
                arrayIndex++;
           }
-          console.log("The array Index is " + arrayIndex);
-
           if (tempArray[arrayIndex].selectedState === false){
                let score = this.state.currentScore + 1;
                if(score > this.state.topScore){
@@ -94,21 +91,18 @@ class DisplayGame extends React.Component {
                this.setState({imagesArray: tempArray});
                this.randomizeArray();
           }
-          console.log(this.state.currentScore);
      };
 
      randomizeArray = () => {
           let tempArray = this.state.imagesArray;
-          console.log(tempArray);
           for (let i = tempArray.length - 1; i > 0; i--) {
                const j = Math.floor(Math.random() * i);
                const temp = tempArray[i];
                tempArray[i] = tempArray[j];
                tempArray[j] = temp;
           }
-          // console.log(tempArray);
           this.setState({ imagesArray: tempArray });
-          // console.log(this.state.imagesArray);
+          console.log(this.state.imagesArray);
      }
 
      render() {
@@ -120,14 +114,10 @@ class DisplayGame extends React.Component {
                     text = {this.state.navText}
                />
                <Header />
-               <div className="container my-5">
-                    <div className="row">
-                         <Virus 
-                              urls = {this.state.imagesArray} 
-                              handleImageClick = {this.handleImageClick}
-                         />
-                    </div>     
-               </div>
+               <Virus 
+                    urls = {this.state.imagesArray} 
+                    handleImageClick = {this.handleImageClick}
+               />
                <Footer />
           </>
           );

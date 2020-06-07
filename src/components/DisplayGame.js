@@ -58,7 +58,8 @@ class DisplayGame extends React.Component {
                     url: "https://phil.cdc.gov//PHIL_Images/15907/15907_lores.jpg",
                     selectedState: false
                }
-          ]
+          ],
+          navText: "Click an image to begin!" 
      };
 
      componentDidMount() {
@@ -67,20 +68,32 @@ class DisplayGame extends React.Component {
 
      handleImageClick = event => {
           console.log("Image was clicked");
-          console.log(this.state.currentScore);
-          console.log(event.target.src);
           let tempArray = this.state.imagesArray;
-          for (let i = 0; i < tempArray.length; i++){
-               if(event.target.src === tempArray[i].url){
-                    if (tempArray[i].selectedState === false){
-                         let score = this.state.currentScore + 1;
-                         this.setState({currentScore: score});
-                         tempArray[i].selectedState = true;
-                         this.setState({imagesArray: tempArray});
-                         this.randomizeArray();
-                    }
+          let arrayIndex = 0;
+          while (event.target.src !== tempArray[arrayIndex].url){
+               arrayIndex++;
+          }
+          console.log("The array Index is " + arrayIndex);
+
+          if (tempArray[arrayIndex].selectedState === false){
+               let score = this.state.currentScore + 1;
+               if(score > this.state.topScore){
+                    this.setState({topScore: score});
                }
-          };
+               this.setState({currentScore: score});
+               this.setState({ navText: "You guessed correctly, you are safe!" });
+               tempArray[arrayIndex].selectedState = true;
+               this.setState({imagesArray: tempArray});
+               this.randomizeArray();
+          } else {
+               this.setState({ navText: "You guessed incorrectly, you are now infected!" });
+               this.setState({currentScore: 0});
+               for (let index = 0; index < tempArray.length; index++) {
+                    tempArray[index].selectedState = false;
+               }
+               this.setState({imagesArray: tempArray});
+               this.randomizeArray();
+          }
           console.log(this.state.currentScore);
      };
 
@@ -104,6 +117,7 @@ class DisplayGame extends React.Component {
                <NavBar 
                     topScore = {this.state.topScore} 
                     currentScore = {this.state.currentScore}
+                    text = {this.state.navText}
                />
                <Header />
                <div className="container my-5">

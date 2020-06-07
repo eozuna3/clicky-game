@@ -11,13 +11,14 @@ class Virus extends React.Component{
      render() {
           return (
                <>
-                    {this.state.virusURL.map((images,index) => (
+                    {this.state.virusURL.map(images => (
                          <div className="col-md-3 my-2">
                               <button
                                    type="button"
                                    className="link-button"
+                                   onClick={this.props.handleImageClick}
                                    >
-                                   <img key={index} onClick={this.props.handleImageClick} src={images.url} className="rounded img-responsive img-thumbnail" alt="coronavirus pic" data-state={images.selectedState}></img>
+                                   <img  src={images.url} className="rounded img-responsive img-thumbnail" alt="coronavirus pic" data-state={images.selectedState}></img>
                               </button>
                          </div>
                     ))}
